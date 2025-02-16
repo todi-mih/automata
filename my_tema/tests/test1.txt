@@ -1,0 +1,50 @@
+% Theodhoraq Mihallari 333CC 
+
+variable x ::= { z, t, u };
+
+automata1 ::= FiniteAutomaton (
+    alphabet :: { a, b, c, d };
+    states :: { q0, q1, q2, q3, q4 };
+    final_states :: { q4 };
+    initial_state :: q0;
+    variable z ::= { d , c};
+
+    q0 -> (
+        a -> q1 ;
+        b -> q2 ;
+    ) ;
+    q1 -> (
+        b -> q3 ;
+        c -> q2 ;
+    ) ;
+    q2 -> (
+        a -> q1 ;
+        d -> q4 ;
+    ) ;
+    q3 -> (
+        c -> q4 ;
+    ) ;
+    q4 -> (
+        z -> q0 ;
+    ) ;
+) ;;
+
+grammar3 ::= Grammar (
+nonterminals :: { A, B, C, D } ;
+alphabet :: { a, b, c, d } ;
+start_symbol :: A ;
+
+A -> a&B | b&C | d&D ;
+BC -> a&B | c ;
+D -> a&D | e ;
+
+) ;;
+
+grammar4 ::= Grammar (
+nonterminals :: { X, Y, Z } ;
+alphabet :: { a, b } ;
+start_symbol :: X ;
+
+X -> a&Y | b&Z | e ;
+YZ -> b&Z | aX ;
+) ;;

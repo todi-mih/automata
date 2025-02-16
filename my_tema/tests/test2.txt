@@ -1,0 +1,51 @@
+% Theodhoraq Mihallari 333CC 
+
+variable x_global ::= { p, q, r };
+%asdasdasdasddsas
+automata2 ::= FiniteAutomaton (
+    alphabet :: { p,q, r, s };
+    states :: { q0, q1, q2, q3 };
+    final_states :: { q3 };
+    initial_state :: q0;
+    variable y ::= { s } ;
+
+    q0 -> (
+        p -> q1 ;
+        q -> q2 ;
+        z -> q3 ; 
+    ) ;
+    q1 -> (
+        x -> q2 ; 
+        r -> q0 ;
+    ) ;
+    q2 -> (
+        z -> q3 ; 
+        p -> q1 ;
+    ) ;
+    q3 -> (
+        y -> q0 ; 
+    ) ;
+) ;;
+
+grammar1 ::= Grammar (
+nonterminals :: { S, S1, S2 ,S3} ;
+alphabet :: { a, b } ;
+start_symbol :: S ;
+variable x ::= { p, q, r };
+
+S -> a&S | b&S | a&S1 ;
+S1 -> a&S2 | e ;
+S2 -> a&S3 | ab ;
+S3 -> a&S3&bb | S2 ;
+
+) ;;
+
+grammar2 ::= Grammar (
+nonterminals :: { S, S1 } ;
+alphabet :: { a, b } ;
+start_symbol :: S ;
+
+S -> a&S | b&S | a&S1 ;
+S1 -> a&S2 | e ;
+
+) ;;
